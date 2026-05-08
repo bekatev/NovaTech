@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #040716;
+  --panel: rgba(12, 18, 42, 0.62);
+  --panel-border: rgba(148, 163, 184, 0.2);
+  --text-soft: #94a3b8;
+  --brand-1: #22d3ee;
+  --brand-2: #6366f1;
+  --text-main: #e2e8f0;
+  --heading: #ffffff;
+  --muted: #94a3b8;
+  --header-bg: rgba(2, 6, 23, 0.65);
+  --footer-bg: rgba(2, 6, 23, 0.7);
+  --accent-text: #67e8f9;
+  --accent-strong: #22d3ee;
+  --toggle-icon: #e2e8f0;
+  --toggle-bg: rgba(15, 23, 42, 0.55);
+}
+
+:root[data-theme='light'] {
+  --bg: #f4f7ff;
+  --panel: rgba(255, 255, 255, 0.72);
+  --panel-border: rgba(148, 163, 184, 0.35);
+  --text-main: #0f172a;
+  --heading: #020617;
+  --muted: #475569;
+  --header-bg: rgba(248, 250, 252, 0.8);
+  --footer-bg: rgba(241, 245, 249, 0.85);
+  --accent-text: #0f4c81;
+  --accent-strong: #0b3f6b;
+  --toggle-icon: #0f4c81;
+  --toggle-bg: rgba(255, 255, 255, 0.9);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.15), transparent 30%),
+    radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.16), transparent 35%),
+    var(--bg);
+  color: var(--text-main);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.015em;
+  color: var(--heading);
+}
+
+p {
+  color: var(--muted);
+}
+
+.section-wrap {
+  @apply mx-auto w-full max-w-7xl px-6 lg:px-8;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.24em];
+  color: var(--accent-text);
+}
+
+.glass-card {
+  @apply rounded-3xl shadow-2xl shadow-black/20 backdrop-blur-xl;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+}
+
+.btn-primary {
+  @apply inline-flex items-center rounded-xl bg-gradient-to-r from-cyan-400 to-indigo-500 px-5 py-3 text-sm font-semibold text-white transition hover:scale-[1.02] hover:from-cyan-300 hover:to-indigo-400;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center rounded-xl border border-slate-500/40 bg-slate-900/40 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/60 hover:text-cyan-200;
+}
+
+.app-shell {
+  color: var(--text-main);
+}
+
+.app-header {
+  background: var(--header-bg);
+}
+
+.app-footer {
+  background: var(--footer-bg);
+}
+
+.theme-toggle {
+  background: var(--toggle-bg) !important;
+  border-color: var(--panel-border) !important;
+}
+
+.theme-icon {
+  color: var(--toggle-icon);
+}
+
+.material-symbols-outlined.theme-icon {
+  font-size: 22px;
+  font-variation-settings: 'FILL' 1;
+  line-height: 1;
+}
+
+:root[data-theme='light'] .text-white,
+:root[data-theme='light'] .text-slate-100,
+:root[data-theme='light'] .text-slate-200,
+:root[data-theme='light'] .text-slate-300,
+:root[data-theme='light'] .text-slate-400,
+:root[data-theme='light'] .text-slate-500 {
+  color: var(--text-main) !important;
+}
+
+:root[data-theme='light'] .text-cyan-300,
+:root[data-theme='light'] .text-cyan-300\/90,
+:root[data-theme='light'] .text-cyan-200 {
+  color: var(--accent-text) !important;
+}
+
+:root[data-theme='light'] .hover\:text-cyan-300:hover,
+:root[data-theme='light'] .hover\:text-cyan-200:hover {
+  color: var(--accent-strong) !important;
+}
+
+:root[data-theme='light'] .border-slate-700\/40,
+:root[data-theme='light'] .border-slate-500\/25,
+:root[data-theme='light'] .border-slate-500\/30 {
+  border-color: var(--panel-border) !important;
+}
+
+:root[data-theme='light'] .bg-slate-950\/40,
+:root[data-theme='light'] .bg-slate-900\/40,
+:root[data-theme='light'] .bg-slate-900\/55 {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
