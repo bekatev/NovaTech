@@ -18,6 +18,8 @@
   --accent-strong: #22d3ee;
   --toggle-icon: #e2e8f0;
   --toggle-bg: rgba(15, 23, 42, 0.55);
+  --menu-panel-bg: #0b1220;
+  --menu-backdrop-bg: #020617;
 }
 
 :root[data-theme='light'] {
@@ -33,6 +35,8 @@
   --accent-strong: #0b3f6b;
   --toggle-icon: #0f4c81;
   --toggle-bg: rgba(255, 255, 255, 0.9);
+  --menu-panel-bg: #ffffff;
+  --menu-backdrop-bg: #e2e8f0;
 }
 
 html,

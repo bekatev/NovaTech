@@ -1,33 +1,101 @@
 <div class="app-shell min-h-screen text-slate-100">
   <header class="app-header sticky top-0 z-50 border-b border-slate-700/40 bg-slate-950/65 backdrop-blur-xl">
-    <nav class="section-wrap flex items-center justify-between py-4">
-      <a routerLink="/" class="text-2xl font-semibold tracking-tight text-white">
+    <nav class="section-wrap py-3">
+      <div class="nav-top-row flex items-center justify-between gap-4">
+        <a routerLink="/" class="brand-link text-2xl font-semibold tracking-tight text-white">
         NovaTech <span class="text-cyan-300">Technologies</span>
-      </a>
-      <ul class="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex">
-        <li *ngFor="let item of navItems">
-          <a
-            [routerLink]="item.path"
-            routerLinkActive="text-white"
-            class="cursor-pointer transition hover:text-cyan-300"
+        </a>
+
+        <div class="desktop-nav flex items-center gap-4">
+          <ul class="flex items-center gap-8 text-sm font-medium text-slate-300">
+            <li *ngFor="let item of navItems">
+              <a
+                [routerLink]="item.path"
+                routerLinkActive="text-white"
+                class="cursor-pointer transition hover:text-cyan-300"
+              >
+                {{ item.label }}
+              </a>
+            </li>
+          </ul>
+          <button
+            class="theme-toggle btn-secondary h-11 w-11 items-center justify-center rounded-full p-0"
+            (click)="toggleTheme()"
+            [attr.aria-label]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'"
+            [attr.title]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'"
           >
-            {{ item.label }}
+            <span class="material-symbols-outlined theme-icon" aria-hidden="true">
+              {{ isDarkTheme ? 'light_mode' : 'dark_mode' }}
+            </span>
+          </button>
+          <a routerLink="/contact" class="btn-primary">
+            Book Demo
           </a>
-        </li>
-      </ul>
-      <button
-        class="theme-toggle btn-secondary inline-flex h-11 w-11 items-center justify-center rounded-full p-0"
-        (click)="toggleTheme()"
-        [attr.aria-label]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'"
-        [attr.title]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'"
-      >
-        <span class="material-symbols-outlined theme-icon" aria-hidden="true">
-          {{ isDarkTheme ? 'light_mode' : 'dark_mode' }}
-        </span>
-      </button>
-      <a routerLink="/contact" class="btn-primary">
-        Book Demo
-      </a>
+        </div>
+
+        <button
+          class="mobile-menu-trigger"
+          type="button"
+          [attr.aria-expanded]="isMobileMenuOpen"
+          aria-controls="mobile-nav-menu"
+          [attr.aria-label]="isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'"
+          (click)="toggleMobileMenu()"
+        >
+          <span class="mobile-menu-icon" [class.open]="isMobileMenuOpen">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+
+      <div class="mobile-menu-container">
+        <button
+          *ngIf="isMobileMenuOpen"
+          class="mobile-menu-backdrop"
+          type="button"
+          aria-label="Close navigation menu"
+          (click)="closeMobileMenu()"
+        ></button>
+        <div
+          id="mobile-nav-menu"
+          class="mobile-menu-panel"
+          [class.open]="isMobileMenuOpen"
+          [attr.aria-hidden]="!isMobileMenuOpen"
+        >
+          <div class="mobile-menu-head">
+            <p class="mobile-menu-title">Menu</p>
+            <span class="mobile-menu-caption">NovaTech</span>
+          </div>
+          <ul class="mobile-menu-list text-base font-medium text-slate-200">
+            <li *ngFor="let item of navItems">
+              <a
+                [routerLink]="item.path"
+                routerLinkActive="text-cyan-300"
+                class="mobile-menu-link"
+                (click)="closeMobileMenu()"
+              >
+                {{ item.label }}
+              </a>
+            </li>
+          </ul>
+          <div class="mobile-menu-actions">
+            <button
+              class="theme-toggle btn-secondary h-11 w-11 items-center justify-center rounded-full p-0"
+              (click)="toggleTheme()"
+              [attr.aria-label]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'"
+              [attr.title]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'"
+            >
+              <span class="material-symbols-outlined theme-icon" aria-hidden="true">
+                {{ isDarkTheme ? 'light_mode' : 'dark_mode' }}
+              </span>
+            </button>
+            <a routerLink="/contact" class="btn-primary flex-1 justify-center" (click)="closeMobileMenu()">
+              Book Demo
+            </a>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
